@@ -1,0 +1,12 @@
+h1{
+    color: red;
+    text-transform: capitalize;
+}
+.chittaCSS{
+    color: white;
+    background-color: green;
+}
+#myId{
+    color: blue;
+    background-color: white;
+}
