@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+    <body>
+        <br>
+        <div>
+            The current date time is <span id="dateTime"></span>
+        <br>
+        </div>
+        <br>
+            You have asseced this page <span id="visitCount"></span>
+        <script>
+            var dateTime = document.getElementById("dateTime");
+            dateTime.innerHTML = new Date();
+
+            var visitCount = document.getElementById("visitCount");
+            var count = 0;
+            if(localStorage.visitCount){
+
+                count = localStorage.visitCount;
+            }
+            count++;
+            if(count == 1){
+                visitCount.innerHTML = "once";
+            }else {
+                visitCount.innerHTML = count + " time";
+            }
+            localStorage.visitCount = count;
+        </script>
+    </body>
+</html>
