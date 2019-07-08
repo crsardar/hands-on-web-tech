@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+    <body>
+        <button id="clickMe">Click Me</button>
+        <p>
+            Number of time button was clicked = <span id="clickCountView">0</span>
+        <script>
+            var clickCountView = document.getElementById("clickCountView");
+            var count = 0;
+            function onClick(){
+                count++;
+                clickCountView.innerHTML = count;
+            }
+            var button = document.getElementById("clickMe");
+            button.addEventListener("click", onClick);
+        </script>
+    </body>
+</html>
