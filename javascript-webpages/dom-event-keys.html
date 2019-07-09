@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<htlm>
+    <head>
+    </head>
+
+    <boby>
+        <br>
+        <input id="nameInput"></input>
+        <br>
+        Welcome <em><span id="geuestName"></span>!</em>
+        
+        <script>
+            function onKeyUp(e){
+                if(e.keyCode == 13){
+                    var nameInput = document.getElementById("nameInput");
+                    var geuestName = document.getElementById("geuestName")
+                    geuestName.innerHTML = nameInput.value
+                    geuestName.style.backgroundColor = "cyan"
+                    geuestName.style.textTransform = "capitalized"
+                }
+            }
+
+            var nameInput = document.getElementById("nameInput")
+            nameInput.addEventListener("keyup", onKeyUp)            
+        </script>
+    </boby>
+</htlm>

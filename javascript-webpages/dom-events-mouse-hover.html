@@ -3,27 +3,31 @@
     <head>
     </head>
     <body>
+        <br>
         <div id="mouseHoverListener">Pleasee put mouse on me!</div>
+        <br>
         <div class="importantText">This is important text!</div>
+        <br>
         <div class="painText">This is some other text.</div>
+        <br>
         <div class="importantText">This is also some important text!</div>
         <script>
             function onMouseOver(){
 
                 var importantTexts = document.getElementsByClassName("importantText");
-                for(var i = 0; i < importScripts.length; i++){
+                for(var i = 0; i < importantTexts.length; i++){
                     importantTexts[i].style.color = 'red';
                     importantTexts[i].style.fontWeight = 'bold';
                 }
             }
+
             function onMouseRemoved(){
 
                 var importantTexts = document.getElementsByClassName("importantText");
-
-                importantTexts.array.forEach(element => {
-                    element.style.color = 'black';
-                    element.style.fontWeight = 'normal';
-                });
+                for(var i = 0; i < importantTexts.length; i++){
+                    importantTexts[i].style.color = 'black';
+                    importantTexts[i].style.fontWeight = 'normal';
+                }
             }
             var mouseHoverListener = document.getElementById("mouseHoverListener");
             mouseHoverListener.addEventListener("mouseover", onMouseOver);
