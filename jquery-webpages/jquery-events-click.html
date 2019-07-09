@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="jquery-with-ajax-3.4.1.slim.js"></script>
+    </head>
+
+    <body>
+        <br>
+        <button id="clickOnMe">Click on me</button>
+        <br><br>
+        Number of clicks = <span id="numberOfClicks">0</span>
+
+        <script>
+            var count = 0;
+            function onClick(){
+                count++;
+                var numberOfClicks = $("#numberOfClicks");
+                numberOfClicks.html(count)
+            }
+            $("#clickOnMe").click(onClick);
+        </script>
+    </body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="jquery-with-ajax-3.4.1.slim.js"></script>
+    </head>
+
+    <body>
+        <input id="enteredName"></input>
+        <br>
+        Welcome <em><span id="guestName"></span>!</em>
+
+        <script>
+            function onKeyUp(e){
+                if(e.keyCode == 13){ // 13 == Enter
+                    var guestName = $("#guestName");
+                    var enteredName = $("#enteredName");
+                    guestName.html(enteredName.val());
+                    
+                    enteredName.val("")
+                }
+            }
+            $("#enteredName").keyup(onKeyUp)
+        </script>
+    </body>
+</html>

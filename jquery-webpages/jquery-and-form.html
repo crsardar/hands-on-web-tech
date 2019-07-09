@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="jquery-with-ajax-3.4.1.slim.js"></script>
+    </head>
+
+    <body>
+        <form>
+            <br>
+            <select name="Choose">
+                <option>Male</option>
+                <option>Female</option>
+            </select>
+            <br><br>
+            <input type="radio" name="species" value="Dog">Dog</input>
+            <input type="radio" name="species" value="Cat">Cat</input>
+            <input type="radio" name="species" value="Bird">Bird</input>
+            <br><br>
+            <input type="checkbox" value="Happy">Happy</input>
+            <input type="checkbox" value="Cute">Cute</input>
+            <input type="checkbox" value="Smart">Smart</input>
+            <p>
+                I'd like to buy a <span id="featureSpan"></span> <span id="genderSpan"></span> <span id="speciesSpan"></span>
+        </form >
+        <script>
+            // Drop down selection
+            $("select[name='Choose']").change(function(){
+                $("#genderSpan").html($(this).val())
+            });
+
+            // Radio Buttons
+            $("input:radio[name='species']").change(function(){
+                if($(this).prop("checked")){
+                    $("#speciesSpan").html($(this).val())
+                }
+            });
+
+            // Check Boxes
+            var features = [];
+            $("input:checkbox").change(function(){
+                
+                var value = $(this).val();
+                if($(this).prop("checked")){
+                    features.push(value);
+                }else{
+                    var index = features.indexOf(value);
+                    if(index != -1){
+                        features.splice(index, 1);
+                    }
+                }
+
+                // Pupulate features
+                var featureSpan =  $("#featureSpan");
+                featureSpan.html("");
+                for(var i = 0; i < features.length; i++){
+                    featureSpan.append(features[i]);
+                    
+                    if(features.length > 1 && i <(features.length -1)){
+                        featureSpan.append(", ");
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>

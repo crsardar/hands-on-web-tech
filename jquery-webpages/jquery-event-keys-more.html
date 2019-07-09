@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="jquery-with-ajax-3.4.1.slim.js"></script>
+    </head>
+
+    <body>
+        <br>
+        <input id="inputFiend"></input>
+        <br><br>
+        You have selected :
+        <br>
+        <ul id="selectedList">
+        </ul>
+        <br>
+        <button id="clearButton">Clear Selections</button>
+
+        <script>
+            var inputFiend = $("#inputFiend");
+            var selectedList = $("#selectedList");
+
+            function onEnterPressed(keyEvent){
+                if(keyEvent.keyCode == 13){ // 13 == Enter
+                    var newText = inputFiend.val();
+                    console.log("onEnterPressed, newText = " + newText)
+                    if(newText)
+                    {
+                        selectedList.append("<li>" + newText + "</li>");
+                        inputFiend.val("");
+                    }
+                }
+            }
+            inputFiend.keyup(onEnterPressed);
+
+            function clearList(){
+                selectedList.empty();
+            }
+            $("#clearButton").click(clearList)
+
+        </script>
+    </body>
+</html>

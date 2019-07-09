@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="jquery-with-ajax-3.4.1.slim.js"></script>
+    </head>
+    <body>
+        <br>
+        <span id="mouseHoverListener">Pleasee put mouse on me!</span>
+        <br><br>
+        <div class="importantText">This is important text!</div>
+        <br>
+        <div class="painText">This is some other text.</div>
+        <br>
+        <div class="importantText">This is also some important text!</div>
+        <script>
+            function onMouseOver(){
+                var importantTexts = $(".importantText");
+                for(var i = 0; i < importantTexts.length; i++){
+                    importantTexts[i].style.color = 'red';
+                    importantTexts[i].style.fontWeight = 'bold';
+                }
+            }
+
+            function onMouseRemoved(){
+                var importantTexts = $(".importantText");
+                for(var i = 0; i < importantTexts.length; i++){
+                    importantTexts[i].style.color = 'black';
+                    importantTexts[i].style.fontWeight = 'normal';
+                }
+            }
+            var mouseHoverListener = $("#mouseHoverListener");
+            mouseHoverListener.mouseover(onMouseOver);
+            mouseHoverListener.mouseout(onMouseRemoved);
+            
+            /* abole 2 lines can be written as -
+            mouseHoverListener.on({
+                mouseover:onMouseOver,
+                // "" is optional
+                "mouseout":onMouseRemoved
+            });
+            */
+
+            /* Or simply as - 
+            mouseHoverListener.hover(onMouseOver, onMouseRemoved);
+            */
+        </script>
+    </body>
+</html>
