@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+        <script src="react.16.8.6.development.js"></script>
+        <script src="react-dom.16.8.6.development.js"></script>
+        <script src="babel.7.5.4.min.js"></script>
+    </head>
+
+    <body>
+        <div id="container"></div>
+
+        <script type="text/babel">
+
+            class MyClass extends React.Component{
+                render() {
+                    return(<h1>Hello React Componets!</h1>);
+                }
+            }
+
+            ReactDOM.render(
+                <MyClass/>,
+                document.getElementById('container')
+            );
+        </script>
+    </body>
+</html>

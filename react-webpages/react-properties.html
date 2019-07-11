@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <script src="react.16.8.6.development.js"></script>
+        <script src="react-dom.16.8.6.development.js"></script>
+        <script src="babel.7.5.4.min.js"></script>
+    </head>
+    
+    <body>
+        <br>
+        <div id="container"></div>
+        
+        <script type="text/babel">
+            class Guest extends React.Component{
+                render(){
+                    return(<h1>Welcome, {this.props.guestName}!</h1>);
+                }
+            }
+
+            ReactDOM.render(
+                <Guest guestName="Shiva"/>,
+                document.getElementById("container")
+            );
+        </script>
+    </body>
+</html>

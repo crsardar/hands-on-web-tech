@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <script src="react.16.8.6.development.js"></script>
+        <script src="react-dom.16.8.6.development.js"></script>
+        <script src="babel.7.5.4.min.js"></script>
+        <script src="jquery-with-ajax-3.4.1.slim.js"></script>
+    </head>
+    
+    <body>
+        <br>
+        <input id="iputText">
+        <br><br>
+        <div id="container"></div>
+        <br><br>
+        <button id="addButton" type="submit">Welcome Guest</button>
+        
+        <script type="text/babel">
+
+            var iputText = $('#iputText');
+            var addButton = $('#addButton');
+
+            var guestName = "Default value"
+
+            class Guest extends React.Component{
+                render(){
+                    return(<h1>Welcome! Please come in {this.props.guestName}!</h1>);
+                }
+            }
+            
+            function welcomeGuest(){
+
+                guestName = iputText.val();
+                iputText.val("");
+
+                ReactDOM.render(
+                    <Guest guestName={guestName}/>,
+                    // $('#container') - will not work here
+                    document.getElementById("container")
+                );
+            }
+
+            addButton.click(welcomeGuest)
+
+        </script>
+    </body>
+</html>
