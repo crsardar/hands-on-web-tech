@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+        <script src="react.16.8.6.development.js"></script>
+        <script src="react-dom.16.8.6.development.js"></script>
+        <script src="babel.7.5.4.min.js"></script>
+    </head>
+
+    <body>
+        <br>
+        <h3>Enter number in box for multiplication.</h3>
+        <br>
+        <div id="container"></div>
+        <script type="text/babel">
+            class InputField extends React.Component{
+                handleChange(e){
+                    var newValue = e.target.value 
+                    console.log("handleChange : newValue = " + newValue)
+                    if(newValue){
+                        this.props.action(this.props.id, newValue)
+                    }
+                }
+
+                render(){
+                    console.log("InputField : render : id " + this.props.id)
+                    return(
+                        <input type="text" onChange={this.handleChange.bind(this)}></input>
+                    )
+                }
+            }
+
+            class ResultComp extends React.Component{
+                render(){
+                    console.log("ResultComp : render")
+                    return(
+                        <div>Result = {this.props.product}</div>
+                    )
+                }
+            }
+
+            class MyApp extends React.Component{
+                constructor(props){
+                    super(props)
+                    this.state = {valueOne : 0, valueTwo : 0, product : 0}
+                    this.makeProduct = this.makeProduct.bind(this)
+                }
+
+                makeProduct(id, value){
+                    if(id == 1){
+                        
+                        var prod = value * this.state.valueTwo
+                        this.setState({valueOne : value, product : prod})
+
+                    }else if(id == 2){
+                        
+                        var prod = value * this.state.valueOne
+                        this.setState({valueTwo : value, product : prod})
+                    }
+                }
+
+                render(){
+                    console.log("MyApp : render")
+                    return (
+                        <div>
+                            <InputField id="1" action={this.makeProduct}/>
+                            <InputField id="2" action={this.makeProduct}/>
+                            <br/>
+                            <ResultComp product={this.state.product}/>
+                        </div>
+                    )
+                }
+            }
+
+            ReactDOM.render(
+                <MyApp/>,
+                document.getElementById("container")
+            )
+        </script>
+    </body>
+</html>

@@ -22,12 +22,12 @@
                 handleClick(){
                     var currentState = !this.state.isDone
                     this.setState({isDone : currentState})
-                    console.log("handleClick : currentState = " + currentState)
+                    console.log("ListItem : handleClick : currentState = " + currentState)
                 }
 
                 render(){
                     var lineStyle = this.state.isDone ? "line-through" : "none"
-                    console.log("render : lineStyle = " + lineStyle + " : this.props.text = " + this.props.text)
+                    console.log("ListItem : render : text = " + this.props.text)
                     return(
                         <li onClick={this.handleClick.bind(this)} 
                         style = {{textDecoration:lineStyle}}>{this.props.text}
@@ -38,6 +38,7 @@
 
             class DynamicList extends React.Component{
                 render(){
+                    console.log("DynamicList : render")
                     return(
                         <ul>
                         {this.props.listItems.map(function(item) {
@@ -55,10 +56,10 @@
                     this.state = {id : 0, listItems : []}
                 }
                 onAdd(){
-                    // e.preventDefault()
-                    var textValue = document.getElementById("newItem").value
+                    var inputField = document.getElementById("inputField")
+                    var textValue = inputField.value
                     
-                    console.log("onAdd : textValue = " + textValue)
+                    console.log("MyApp : onAdd : textValue = " + textValue)
                     
                     if(textValue){
                         var newItem =  {id : this.state.id, text : textValue}
@@ -66,13 +67,16 @@
                         newListItems = newListItems.concat(newItem);
 
                         this.setState({id : (this.state.id + 1), listItems : newListItems})
+                        
+                        inputField.value = ""
                     }
                 }
 
                 render(){
+                    console.log("MyApp : render")
                     return(
                         <div>
-                        <input id="newItem" placeholder="New Item"></input>
+                        <input id="inputField" placeholder="New Item"></input>
                         <button onClick={this.onAdd.bind(this)}>Add</button>
                         <br/>
                         <DynamicList listItems={this.state.listItems}/>
@@ -85,7 +89,6 @@
                 <MyApp/>,
                 document.getElementById("container")
             )
-
         </script>
     </body>
 </html>
