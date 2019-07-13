@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<!-- NOT WORKING -->
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+        <script src="react.16.8.6.development.js"></script>
+        <script src="react-dom.16.8.6.development.js"></script>
+        <script src="babel.7.5.4.min.js"></script>
+    </head>
+
+    <body>
+        <br>
+        <h3>Enter number in box for multiplication.</h3>
+        <br>
+        <div id="container"></div>
+        <script type="text/babel">
+
+            function onValueChange(id, resultComp, value) {
+                if(id == 1){
+                        
+                        var prod = value * resultComp.state.valueTwo
+                        resultComp.setState({valueOne : value, product : prod})
+
+                    }else if(id == 2){
+                        
+                        var prod = value * resultComp.state.valueOne
+                        resultComp.setState({valueTwo : value, product : prod})
+                    }
+            }
+            class InputField extends React.Component{
+                handleChange(e){
+                    var newValue = e.target.value 
+                    console.log("handleChange : newValue = " + newValue)
+                    if(newValue){
+                        this.props.action(this.props.id, newValue, this.props.resultComp)
+                    }
+                }
+
+                render(){
+                    console.log("InputField : render : id " + this.props.id)
+                    return(
+                        <input type="text" onChange={this.handleChange.bind(this)}></input>
+                    )
+                }
+            }
+
+            class ResultComp extends React.Component{
+                constructor(props){
+                    super(props)
+                    this.state = {valueOne : 0, valueTwo : 0, product : 0}
+                }
+                render(){
+                    console.log("ResultComp : render")
+                    return(
+                        <div>Result = {this.state.product}</div>
+                    )
+                }
+            }
+
+            class MyApp extends React.Component{
+                render(){
+                    console.log("MyApp : render")
+                    var alreadyCreatedComponent = new ResultComp()
+                    return (
+                        <div>
+                            
+                            <InputField id="1" action={onValueChange} resultComp={alreadyCreatedComponent}/>
+                            <InputField id="2" action={onValueChange} resultComp={alreadyCreatedComponent}/>
+                            <alreadyCreatedComponent id="resultComp"/>
+                        
+                        </div>
+                    )
+                }
+            }
+
+            ReactDOM.render(
+                <MyApp/>,
+                document.getElementById("container")
+            )
+        </script>
+    </body>
+</html>
