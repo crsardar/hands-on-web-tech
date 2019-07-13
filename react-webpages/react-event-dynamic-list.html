@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+        <script src="react.16.8.6.development.js"></script>
+        <script src="react-dom.16.8.6.development.js"></script>
+        <script src="babel.7.5.4.min.js"></script>
+    </head>
+
+    <body>
+        <br>
+        <div id="container"></div>
+
+        <script type="text/babel">
+            class ListItem extends React.Component{
+                constructor(props){
+                    super(props)
+                    this.state = {isDone : false}
+                }
+
+                handleClick(){
+                    var currentState = !this.state.isDone
+                    this.setState({isDone : currentState})
+                    console.log("handleClick : currentState = " + currentState)
+                }
+
+                render(){
+                    var lineStyle = this.state.isDone ? "line-through" : "none"
+                    console.log("render : lineStyle = " + lineStyle + " : this.props.text = " + this.props.text)
+                    return(
+                        <li onClick={this.handleClick.bind(this)} 
+                        style = {{textDecoration:lineStyle}}>{this.props.text}
+                        </li>
+                    );
+                }
+            }
+
+            class DynamicList extends React.Component{
+                render(){
+                    return(
+                        <ul>
+                        {this.props.listItems.map(function(item) {
+                            return (<ListItem id={item.id} key={item.id} text={item.text}/>)
+                            })
+                        }
+                        </ul>
+                    )
+                }
+            }
+
+            class MyApp extends React.Component{
+                constructor(props){
+                    super(props)
+                    this.state = {id : 0, listItems : []}
+                }
+                onAdd(){
+                    // e.preventDefault()
+                    var textValue = document.getElementById("newItem").value
+                    
+                    console.log("onAdd : textValue = " + textValue)
+                    
+                    if(textValue){
+                        var newItem =  {id : this.state.id, text : textValue}
+                        var newListItems = this.state.listItems;
+                        newListItems = newListItems.concat(newItem);
+
+                        this.setState({id : (this.state.id + 1), listItems : newListItems})
+                    }
+                }
+
+                render(){
+                    return(
+                        <div>
+                        <input id="newItem" placeholder="New Item"></input>
+                        <button onClick={this.onAdd.bind(this)}>Add</button>
+                        <br/>
+                        <DynamicList listItems={this.state.listItems}/>
+                        </div>
+                    )
+                }
+            }
+
+            ReactDOM.render(
+                <MyApp/>,
+                document.getElementById("container")
+            )
+
+        </script>
+    </body>
+</html>

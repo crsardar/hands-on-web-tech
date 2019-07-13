@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+        <script src="react.16.8.6.development.js"></script>
+        <script src="react-dom.16.8.6.development.js"></script>
+        <script src="babel.7.5.4.min.js"></script>
+    </head>
+
+    <body>
+        <br>
+        <div id="container"></div>
+        
+        <script type="text/babel">
+        class SearchableList extends React.Component{
+            constructor(props){
+                super(props)
+                var contents = ['Ant', 'Elephant', 'Tiger', 'Cow'];
+                this.state = {allContents : contents, currentContents :  contents}
+            }
+
+            filterList(input){
+                var searchText = input.target.value;
+                // console.log("searchText = " + searchText);
+                var updatedContents = this.state.allContents.filter(function(item) {
+                    // console.log("item = " + item);
+                    return item.search(searchText) != -1;
+                });
+
+                this.setState({currentContents : updatedContents});
+            }
+
+            render(){
+                return(
+                    <div>
+                        <input type="text" placeholder="search" onChange={this.filterList.bind(this)}></input>
+                        <br/>
+                        <ul>
+                        {this.state.currentContents.map(function(item){
+                            return(<li key={item}>{item}</li>);
+                            })
+                        }
+                        </ul>
+                    </div>
+                );
+            }
+        }
+
+        ReactDOM.render(
+            <SearchableList/>,
+            document.getElementById("container")
+        );
+        </script>
+    </body>
+</html>

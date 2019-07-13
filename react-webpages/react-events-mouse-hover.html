@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+        <script src="react.16.8.6.development.js"></script>
+        <script src="react-dom.16.8.6.development.js"></script>
+        <script src="babel.7.5.4.min.js"></script>
+    </head>
+
+    <body>
+        <br>
+        <div id="container"></div>
+        <script type="text/babel">
+            class MouseListener extends React.Component{
+                constructor(props){
+                    super(props);
+                    this.state = {bold : false, color : 'black'};
+                }
+        
+                onMouseOver(){
+                    this.setState({bold : true});
+                }
+
+                onMouseRemoved(){
+                    this.setState({bold : false});
+                }
+
+                onClick(){
+                    if(this.state.color == 'black'){
+                        this.setState({color : 'red'});
+                    }else {
+                        this.setState({color : 'black'});
+                    }
+                }
+
+                render(){
+                    var customColor = this.state.color;
+                    var weight = this.state.bold ? 'bold' : 'normal';
+                    return(
+                        <span style={{color : customColor, fontWeight : weight}}
+                        onMouseOver={this.onMouseOver.bind(this)}
+                        onMouseOut={this.onMouseRemoved.bind(this)}
+                        onClick={this.onClick.bind(this)}>{this.props.text}</span>
+                    );
+                }
+            }
+
+            ReactDOM.render(
+                <div>
+                    <MouseListener text="Never say never!"/>
+                    <br/><br/>
+                    <MouseListener text="I am the best!"/>
+                </div>,
+                document.getElementById("container")
+            );
+        </script>
+    </body>
+</html>
