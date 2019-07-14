@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<!-- NOT WORKING YET -->
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+        <script src="react.16.8.6.development.js"></script>
+        <script src="react-dom.16.8.6.development.js"></script>
+        <script src="babel.7.5.4.min.js"></script>
+        <script src="jquery-with-ajax-3.4.1.slim.js"></script>
+    </head>
+
+    <body>
+        <br/>
+        <div id="container"></div>
+        
+        <script type="text/babel">
+
+            class ListItem extends React.Component{
+                render(){
+                    var bgColor = (this.props.id % 2) == 0 ? rgba(50, 115, 220, 0.3) : rgb(50, 115, 220);
+                    return(
+                        <div background-color="{bgColor}">
+                        <h4>Item No = {this.props.id}</h4>
+                        <h6>{this.props.text}</h6>
+                        </div>
+                    )
+                }
+            }
+
+            class MyList extends React.Component{
+                constructor(props){
+                    super(props)
+                    this.state = {listItem : []}
+                }
+
+                componentDidMount(){
+                    var url = "http://localhost:8080/mvn-spring-list/list"
+                    
+                    $.getJSON(url, function(data) {
+                        
+                        return this.setState({listItem : data})
+
+                    }).bind(this)
+                }
+
+                render(){
+
+                    return(
+                        <div>
+                        <h3> This is what I got from Server </h3>
+                        <br/>
+                        {
+                            this.state.listItem.map(function(item){
+                                return(<ListItem id={item.id} text={item.text}></ListItem>)
+                            })
+                        }
+                        </div>
+                    )
+                }
+            }
+            
+            ReactDOM.render(
+                <MyList/>,
+                document.getElementById("container")
+            )
+        </script>
+    </body>
+</html>
