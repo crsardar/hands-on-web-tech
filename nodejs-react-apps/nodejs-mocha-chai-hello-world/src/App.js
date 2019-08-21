@@ -6,40 +6,69 @@ import ImageItems from './ImageItems'
 class App extends Component {
 
  imageUrl = "https://www.w3schools.com/images/w3schools_green.jpg"
+ ids = 0
 
   constructor(props){
 
     super(props)
     
-    var contentOn = new Content(0, "Image0", this.imageUrl)
-    var contentTwo = new Content(1, "Image1", this.imageUrl)
+    var contentOn = new Content(this.ids, "Image0", this.imageUrl)
+    this.ids = this.ids + 1
+    var contentTwo = new Content(this.ids, "Image1", this.imageUrl)
     this.state = {listItems:[contentOn, contentTwo]}
     console.log(this.state.listItems)
   }
 
-  remodeElement(imageItems){
+  removeElement(imageItems){
 
+    var name = imageItems.props.name
+    console.log("App : removeElement : name = " + name)
+
+    var newContents = this.state.listItems.filter((item)=> item.name.search(name) === -1)
+    this.setState({listItems : newContents})
   }
 
+  onAdd(){
+
+    var inputField = document.getElementById("inputField")
+    var textValue = inputField.value
+    
+    console.log("App : onAdd : textValue = " + textValue)
+    
+    if(textValue){
+
+      this.ids = this.ids + 1
+      var content = new Content(this.ids, textValue, this.imageUrl)
+      var newContents = this.state.listItems
+      newContents = newContents.concat(content)
+      this.setState({listItems : newContents})
+      inputField.value = ""
+    }
+}
+
   render(){
-    //  console.log("Component : render()")
-    //  console.log("ListItems : ".concat(this.state.listItems))
+
+    console.log("App : render()")
+    var removeAction = this.removeElement.bind(this)
     return(
       <div>
-      <img src={this.imageUrl} alt="aa"></img>
-      <div>
+        <ul>
           {this.state.listItems.map(function(item) {
-            return (<ImageItems id={item.id} name={item.name} ulr={item.url}/>)
+            return (<ImageItems id={item.id} name={item.name} url={item.url} key={item.id} removeAction={removeAction}/>)
             })
           }
-        </div>
+        </ul>
+        <input id="inputField" placeholder="New Image Name"></input>
+        <button onClick={this.onAdd.bind(this)}>Add</button>
       </div>
     )
   }
 }
 
 class Content{
+
   constructor(id, name, url){
+
     this.id = id
     this.name = name
     this.url = url
