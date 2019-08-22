@@ -1,3 +1,12 @@
+## Note Chittaranjan ->
+Insatll Engyme & Chai
+
+    npm install --save-dev enzyme react-test-renderer chai
+    
+## Note Chittaranjan <-
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

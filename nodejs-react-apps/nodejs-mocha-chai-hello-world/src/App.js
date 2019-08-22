@@ -1,7 +1,8 @@
 
 import React, {Component} from 'react';
+
 import './App.css';
-import ImageItems from './ImageItems'
+import Images from './Images'
 
 class App extends Component {
 
@@ -49,15 +50,9 @@ class App extends Component {
   render(){
 
     console.log("App : render()")
-    var removeAction = this.removeElement.bind(this)
     return(
       <div>
-        <ul>
-          {this.state.listItems.map(function(item) {
-            return (<ImageItems id={item.id} name={item.name} url={item.url} key={item.id} removeAction={removeAction}/>)
-            })
-          }
-        </ul>
+        <Images listItems={this.state.listItems}removeAction={this.removeElement.bind(this)}/>
         <input id="inputField" placeholder="New Image Name"></input>
         <button onClick={this.onAdd.bind(this)}>Add</button>
       </div>
