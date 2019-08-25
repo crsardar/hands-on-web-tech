@@ -1,0 +1,14 @@
+{
+  "name": "com.crsardar.webtech.nodejs",
+  "version": "1.0.0",
+  "description": "Hello Wordld in NodeJS",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "Chittaranjan Sardar",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
