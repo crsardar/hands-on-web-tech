@@ -1,4 +1,8 @@
 ## Note Chittaranjan ->
+    npm install mpm -g
+
+    npm install -g create-react-app
+    
 Insatll Engyme & Chai
 
     npm install --save-dev enzyme react-test-renderer chai

@@ -1,4 +1,12 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Note Chittaranjan ->
+    npm install mpm -g
+
+    npm install -g create-react-app
+    
+## Note Chittaranjan 
+
+<-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
