@@ -1,0 +1,15 @@
+{
+  "name": "com.crsardar.nodejs",
+  "version": "1.0.0",
+  "description": "NodeJS test all features - Express Lib, ReactJS...",
+  "main": "App.js",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Chittaranjan Sardar",
+  "license": "ISC"
+}
