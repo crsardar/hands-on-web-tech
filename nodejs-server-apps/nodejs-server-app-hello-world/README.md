@@ -1,15 +1,11 @@
 
 
-Install : 'express' library is used to make this app.
-
-    npm install express --save
-
-
-Create app 
     1. Create project directory
     2. Move into directory
-    3. run     
+    3. run
+        Create app      
         npm init
+    4. create indes.js file with code
 
 Run 
 

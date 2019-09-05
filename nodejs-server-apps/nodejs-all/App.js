@@ -10,19 +10,30 @@ app.use('/', express.static('web-pages'));
 
 app.use('/data', (req, res) => {
 
-    var data = [];
-    for (i = 0; i < 20; i++){
+    var query = req.query;
+    var nameQuery = query.name;
+
+    console.log(`Passed nameQuery = ${nameQuery}`);
+
+    var timeToWait = Date.now() + 100000;
+    
+    
+    while(timeToWait > Date.now()){
         
-        data.push({id:i, name:`Item ${i}`});
+        console.log(`Processing for ${nameQuery}`);
     }
     
-    console.log(data);
-    res.json(data);
+    res.json({message: `Done for ${nameQuery}`});
+});
+
+app.use('/show-all', (req, res) => {
+
+    res.render
 });
 
 // Default
 app.use((req, res) => {
-    
+
     res.status(404);
     res.sendFile('404.html', { root: 'web-pages' });
 });
@@ -31,3 +42,4 @@ app.listen(3000, () => {
 
     console.log(`I am liteling to you at http://127.0.0.1:${portNumber}`);
 });
+
