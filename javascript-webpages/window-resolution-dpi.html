@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+        Display Height is = <span id="height"></span>
+        <br>
+        Display Width is = <span id="width"></span>
+        <br>
+        Display DPI is = <span id="dpi"></span>
+        <br>
+        <button id="button">Check Screen</button>
+        <script>
+            var button = document.getElementById("button");
+            var heightView = document.getElementById("height");
+            var widthView = document.getElementById("width");
+            var dpiView = document.getElementById("dpi");
+            function onClick(){
+                heightView.innerHTML = window.screen.availHeight;
+                widthView.innerHTML = window.screen.availWidth
+            }
+            button.addEventListener("click", onClick);
+        </script>
+    </body>
+</html>
