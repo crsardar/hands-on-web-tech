@@ -13,7 +13,8 @@ import {Component, Output, EventEmitter} from '@angular/core';
 })
 export class AppChildComponent {
 
-    @Output() myEventEmitterOutput: EventEmitter<number> =  new EventEmitter();
+    @Output()
+    myEventEmitterOutput: EventEmitter<number> =  new EventEmitter();
 
     myClick() {
 

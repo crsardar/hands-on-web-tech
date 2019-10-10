@@ -8,8 +8,8 @@ import {Component, Input} from '@angular/core';
     <br/>
     Occupation: {{job}}
     </div>
-    `, 
-    styles:[`
+    `,
+    styles: [`
     div{
         margin: 10px;
         padding: 15px;
@@ -17,12 +17,15 @@ import {Component, Input} from '@angular/core';
     }
     `]
 })
-export class DataReceiver{
-    
-    @Input('name') person: string;
-    @Input('occupation') job: string;
-    
-    constructor(){
+export class DataReceiver {
+
+    @Input('name')
+    person: string;
+
+    @Input('occupation')
+    job: string;
+
+    constructor() {
         this.person = 'Chittaranjan';
         this.job = 'Engineer';
     }

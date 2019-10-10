@@ -15,7 +15,8 @@ import {MyCustomObject} from './app.parent.component';
 })
 export class AppObjectEmitterComponent {
 
-    @Output() myCustomObjectEmitterOutput: EventEmitter<MyCustomObject> = new EventEmitter();
+    @Output()
+    myCustomObjectEmitterOutput: EventEmitter<MyCustomObject> = new EventEmitter();
 
     id = 0;
 
