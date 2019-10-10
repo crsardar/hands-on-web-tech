@@ -11,8 +11,6 @@ export class AppParentComponent {
 
   numberOfClick: number;
 
-  //myAppCustomObject: AppCustomObject;
-
   constructor() {
     this.numberOfClick  = 0;
   }
@@ -22,17 +20,4 @@ export class AppParentComponent {
 
     this.numberOfClick += myEvent;
   }
-/*
-  myCustomObjectEventListener(eventObject: AppCustomObject) {
-
-    this.myAppCustomObject = eventObject;
-  }
-  */
 }
-/*
-export class AppCustomObject {
-  id: number;
-  name: string;
-  occupation: string;
-}
-*/
