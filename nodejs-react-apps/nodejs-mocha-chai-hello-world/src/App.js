@@ -6,8 +6,8 @@ import Images from './Images'
 
 class App extends Component {
 
- imageUrl = "https://www.w3schools.com/images/w3schools_green.jpg"
- ids = 0
+  imageUrl = "https://www.w3schools.com/images/w3schools_green.jpg"
+  ids = 0
 
   constructor(props){
 
