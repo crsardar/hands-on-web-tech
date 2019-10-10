@@ -10,6 +10,7 @@ export class AppParentComponent {
   title = 'angular-custom-event';
 
   numberOfClick: number;
+  myCustomObject: MyCustomObject;
 
   constructor() {
     this.numberOfClick  = 0;
@@ -20,4 +21,15 @@ export class AppParentComponent {
 
     this.numberOfClick += myEvent;
   }
+
+  myCustomObjectEventListenerMethod(pCustomObject: MyCustomObject) {
+
+    this.myCustomObject = pCustomObject;
+  }
+}
+
+export class MyCustomObject {
+
+  id: number;
+  name: string;
 }

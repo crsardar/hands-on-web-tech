@@ -1,5 +1,6 @@
 
-Chittaranjan - This is also an example - How to pass data from Child component to Parent component
+Chittaranjan -  This is also an example - How to pass data from Child component to Parent component.
+                This also contains an example of emiting Custom Object.
 
 # AngularCustomEvent
 

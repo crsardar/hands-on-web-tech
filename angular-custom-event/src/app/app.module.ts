@@ -3,11 +3,13 @@ import { NgModule } from '@angular/core';
 
 import { AppParentComponent} from './app.parent.component';
 import {AppChildComponent} from './app.child.component';
+import {AppObjectEmitterComponent} from './app.object.emitter.component';
 
 @NgModule({
   declarations: [
     AppParentComponent,
-    AppChildComponent
+    AppChildComponent,
+    AppObjectEmitterComponent
   ],
   imports: [
     BrowserModule

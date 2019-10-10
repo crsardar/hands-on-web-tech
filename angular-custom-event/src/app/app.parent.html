@@ -7,4 +7,17 @@
     <hr>
     <br/>
     Button in the child component was chilcked {{numberOfClick}} times/s.
+    <br/>
+    <br/>
+    <hr>
+    <app-custom-object-emitter (myCustomObjectEmitterOutput)="myCustomObjectEventListenerMethod($event)"></app-custom-object-emitter>
+    <br/>
+    <br/>
+    <hr>
+    <br/>
+    Object Passed by Custom Event Emitter:
+    <br/>
+    <span *ngIf="myCustomObject">id = {{myCustomObject.id}}.</span>
+    <br/>
+    <span *ngIf="myCustomObject">name = {{myCustomObject.name}}.</span>
 </div>
