@@ -1,0 +1,22 @@
+{
+  "name": "com.crsardar.webtech.ndejs.express",
+  "version": "1.0.0",
+  "description": "Test different ways to pass values through REST URLs in Express",
+  "main": "App.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/crsardar/WebTech.git"
+  },
+  "author": "Chittaranjan Sardar",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/crsardar/WebTech/issues"
+  },
+  "homepage": "https://github.com/crsardar/WebTech#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
