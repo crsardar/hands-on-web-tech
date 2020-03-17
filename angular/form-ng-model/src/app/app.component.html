@@ -1,0 +1,27 @@
+<h3>Hands on Angular Form, using ngModel</h3>
+<form #anyNameForThisFormDir="ngForm" (ngSubmit)="onAdd()">
+  <p>
+    <input type="text" name="firstName" [(ngModel)]="personModel.firstName" placeholder="First Name">
+  </p>
+  <p>
+    <input type="text" name="lastName" [(ngModel)]="personModel.lastName" placeholder="Last  Name">
+  </p>
+  <p>
+    <input type="text" name="country" [(ngModel)]="personModel.country" placeholder="Name of country">
+  </p>
+  <button type="submit" [disabled]="!anyNameForThisFormDir.valid">Add</button>
+</form>
+<br>
+<div *ngIf="persons.length>0; else showEmptyMessage">
+  <h4>Added Persons</h4>
+  <ul>
+    <li *ngFor="let person of persons">
+      <h5>Name : {{person.firstName}} {{person.lastName}}</h5>
+      <h6>Country : {{person.country}}</h6>
+    </li>
+  </ul>
+
+</div>
+<ng-template #showEmptyMessage>
+  <h5>No one in prsons list!</h5>
+</ng-template>
